@@ -10,7 +10,7 @@ from app.core.database import get_connection
 SUPPORTED_SOURCES = {
     "whatsapp",
     "app_usage",
-    "location",
+    "locations",
     "calls",
     "whatsapp_calls",
     "upi_transactions",
@@ -91,7 +91,7 @@ def _normalize_row(row: dict, source_type: str) -> dict:
         actor        = row.get("user_id")
         message_text = f"{row.get('app_name')} - {row.get('action_type')}"
 
-    elif source_type == "location":
+    elif source_type == "locations":
         event_type   = "location"
         actor        = row.get("user_id")
         message_text = f"Lat:{row.get('latitude')} Lon:{row.get('longitude')}"
